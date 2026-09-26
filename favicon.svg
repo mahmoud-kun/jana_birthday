@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="34%" r="78%">
+      <stop offset="0" stop-color="#3a1f22"/>
+      <stop offset="1" stop-color="#090807"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f1e3bf"/>
+      <stop offset="1" stop-color="#a78a57"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="26" fill="url(#bg)"/>
+  <rect x="19" y="21" width="90" height="18" rx="4" fill="#171311" stroke="url(#gold)" stroke-width="3"/>
+  <g fill="#ead8ad">
+    <circle cx="30" cy="30" r="2.4"/><circle cx="42" cy="30" r="2.4"/>
+    <circle cx="54" cy="30" r="2.4"/><circle cx="66" cy="30" r="2.4"/>
+    <circle cx="78" cy="30" r="2.4"/><circle cx="90" cy="30" r="2.4"/>
+    <circle cx="102" cy="30" r="2.4"/>
+  </g>
+  <rect x="27" y="46" width="74" height="50" rx="6" fill="#d9d0bc" stroke="#8e7955" stroke-width="3"/>
+  <path d="M27 46 C42 57 44 77 31 96 H27 Z" fill="#2a181a"/>
+  <path d="M101 46 C86 57 84 77 97 96 H101 Z" fill="#2a181a"/>
+  <path d="M56 61 L78 71 L56 82 Z" fill="#211b18"/>
+  <circle cx="96" cy="99" r="17" fill="#161311" stroke="url(#gold)" stroke-width="3"/>
+  <g fill="#cdbb91">
+    <circle cx="96" cy="99" r="4"/>
+    <circle cx="96" cy="88" r="4"/><circle cx="106" cy="96" r="4"/>
+    <circle cx="100" cy="109" r="4"/><circle cx="86" cy="103" r="4"/>
+  </g>
+  <path d="M79 107 C67 113 54 113 42 108" fill="none" stroke="#b89d68" stroke-width="3" stroke-linecap="round"/>
+</svg>
