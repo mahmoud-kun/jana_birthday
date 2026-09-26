@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>سينما الليلة دي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="grain"></div>
+<div class="scratch scratch-a"></div>
+<div class="scratch scratch-b"></div>
+
+<main id="app">
+  <section class="scene active" id="outside" aria-label="واجهة السينما">
+    <div class="night-glow"></div>
+    <div class="facade">
+      <div class="facade-top">
+        <div class="bulb-row top-bulbs"></div>
+        <div class="marquee">
+          <span class="marquee-kicker">عرض واحد بس النهارده</span>
+          <h1>سينما الليلة دي</h1>
+          <span class="marquee-joke">اللي يتأخر مالوش فشار</span>
+        </div>
+        <div class="bulb-row bottom-bulbs"></div>
+      </div>
+
+      <div class="facade-body">
+        <div class="poster-case poster-left">
+          <div class="poster-glass">
+            <span>عرض الليلة</span>
+            <strong>الباب<br>المفتوح</strong>
+            <small>نسخة قديمة على أصولها</small>
+          </div>
+        </div>
+
+        <div class="entrance">
+          <div class="cinema-nameplate">دخول القاعة</div>
+          <div class="doors">
+            <div class="door door-l"></div>
+            <div class="door-gap">
+              <div class="depth-hall"></div>
+            </div>
+            <div class="door door-r"></div>
+          </div>
+          <div class="floor-lines"></div>
+        </div>
+
+        <div class="booth">
+          <div class="booth-cap">شباك التذاكر</div>
+          <div class="booth-glass">
+            <div class="reflection"></div>
+            <div class="clerk-shadow"></div>
+            <p id="clerkText">التذكرة باسم مين؟</p>
+            <button class="btn btn-outline" id="claimBtn">أنا چنى ملخصات</button>
+          </div>
+          <div class="booth-bottom"></div>
+        </div>
+      </div>
+
+      <div class="pavement">
+        <span>◌</span><span>◦</span><span>◌</span>
+      </div>
+    </div>
+
+    <div class="ticket-pop" id="ticketPop" aria-hidden="true">
+      <div class="ticket">
+        <div class="ticket-main">
+          <div class="ticket-brand">سينما الليلة دي</div>
+          <div class="ticket-row"><b>الاسم</b><span>چنى ملخصات</span></div>
+          <div class="ticket-row"><b>الفيلم</b><span>الباب المفتوح</span></div>
+          <div class="ticket-row"><b>المعاد</b><span>دلوقتي</span></div>
+          <div class="ticket-row"><b>المقعد</b><span>لسه ما قعدناش</span></div>
+          <button class="btn ticket-go" id="enterBtn">طب يلا ندخل</button>
+        </div>
+        <div class="ticket-stub">
+          <span>عرض واحد</span>
+          <strong>١</strong>
+          <small>NO REFUND</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="hall" aria-label="قاعة السينما">
+    <div class="hall-ceiling">
+      <i></i><i></i><i></i><i></i><i></i>
+    </div>
+
+    <div class="wall-sconce left-sconce"><span></span></div>
+    <div class="wall-sconce right-sconce"><span></span></div>
+
+    <div class="stage">
+      <div class="proscenium">
+        <div class="curtain curtain-l"></div>
+        <div class="curtain curtain-r"></div>
+        <div class="screen">
+          <div class="screen-vignette"></div>
+          <div class="screen-copy" id="screenCopy">
+            <span>اختاري مكانك يا فنانة</span>
+            <small>بس خلي بالك... مش كل كرسي ليكي</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auditorium">
+      <div class="aisle"></div>
+      <div class="rows" id="rows"></div>
+    </div>
+
+    <div class="message-card" id="seatMessage">
+      دوسي على كرسي كده نشوف
+    </div>
+    <div class="seat-confirm-bubble" id="seatConfirmBubble">
+      <span>أهو ده</span>
+      <strong>مكانك من الأول</strong>
+      <small>اقعدي بقى الفيلم هيبدأ</small>
+    </div>
+  </section>
+
+  <section class="scene" id="ready" aria-label="المقعد الصحيح">
+    <div class="ready-light"></div>
+    <div class="ready-stage">
+      <div class="ready-curtain left"></div>
+      <div class="ready-curtain right"></div>
+      <div class="ready-screen">
+        <div class="ready-copy">
+          <span>أهو ده</span>
+          <strong>مكانك من الأول</strong>
+          <small>اقعدي بقى... الفيلم هيبدأ</small>
+        </div>
+      </div>
+    </div>
+    <div class="projector-beam"></div>
+    
+  </section>
+
+  <section class="scene" id="screening" aria-label="بداية الفيلم والعطل">
+    <div class="screening-room">
+      <div class="screening-stage">
+        <div class="screening-curtain curtain-left" id="filmCurtainL"></div>
+        <div class="screening-curtain curtain-right" id="filmCurtainR"></div>
+
+        <div class="movie-screen" id="movieScreen">
+          <div class="movie-vignette"></div>
+          <div class="movie-grain"></div>
+
+          <div class="film-phase phase-leader active-phase" id="phaseLeader">
+            <div class="leader-circle"></div>
+            <div class="count-number" id="countNumber">3</div>
+          </div>
+
+          <div class="film-phase phase-title" id="phaseTitle">
+            <span>عرض الليلة</span>
+            <strong>الباب المفتوح</strong>
+            <small>يرجى عدم الكلام أثناء العرض</small>
+          </div>
+
+          <div class="film-phase phase-scene" id="phaseScene">
+            <div class="fake-film-set">
+              <div class="film-window"></div>
+              <div class="film-door">
+                <div class="door-light"></div>
+              </div>
+              <div class="film-silhouette"></div>
+              <div class="film-caption">الباب المفتوح</div>
+            </div>
+
+            <iframe
+              id="openDoorClip"
+              class="movie-embed"
+              title="مشهد من فيلم الباب المفتوح - روتانا سينما"
+              data-src="https://www.youtube-nocookie.com/embed/kleXS0woZuQ?autoplay=1&start=3&end=23&controls=0&rel=0&modestbranding=1&playsinline=1"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div class="film-phase phase-malfunction" id="phaseMalfunction">
+            <div class="burn-hole"></div>
+            <div class="jump-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screening-seats-shadow"></div>
+      <div class="screening-caption" id="screeningCaption"></div>
+    </div>
+  </section>
+
+  <section class="scene" id="reveal" aria-label="الكشف عن النسخة الخاصة">
+    <div class="reveal-room">
+      <div class="reveal-stage">
+        <div class="reveal-curtain reveal-left"></div>
+        <div class="reveal-curtain reveal-right"></div>
+        <div class="reveal-screen">
+          <div class="reveal-grain"></div>
+          <div class="reveal-copy">
+            <span class="reveal-first">الباب المفتوح</span>
+            <span class="reveal-second">بس حد نسي يفتحه</span>
+            <div class="reveal-divider"></div>
+            <span class="reveal-credit">بطولة</span>
+            <strong>چنى</strong>
+            <small>ومعانا نسخ كتير منها للأسف</small>
+          </div>
+        </div>
+      </div>
+      <div class="cast-chips">
+        <span>چنى ملخصات</span><span>چنى Rally</span><span>چنى FEE</span>
+        <span>چنى تحكم</span><span>چنى HERAFY</span><span>چنى NAWA</span>
+      </div>
+      
+    </div>
+  </section>
+
+
+
+  <section class="scene p3-scene" id="firstShot" aria-label="أول لقطة">
+    <div class="p3-room">
+      <div class="film-track track-top"></div>
+      <div class="film-track track-bottom"></div>
+      <div class="firstshot-stage">
+        <div class="firstshot-kicker" id="firstShotKicker">ودي كانت أول لقطة</div>
+        <div class="chat-frame">
+          <div class="frame-holes left"></div>
+          <img src="assets/first_chat.jpg" alt="أول سكرين بين محمود وچنى">
+          <div class="frame-holes right"></div>
+        </div>
+        <div class="firstshot-line" id="firstShotLine">او اول مرة العبث بدأ رسمي</div>
+        <div class="firstshot-joke" id="firstShotJoke">بداية محترمة جدا تديك احساس ان اللي جاي كله عقل</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene p3-scene" id="summaries" aria-label="چنى ملخصات">
+    <div class="desk-scene">
+      <div class="desk-light"></div>
+      <div class="summary-title">
+        <span>چنى ملخصات ظهرت تاني</span>
+        <small>غالبا فيه امتحان بكرا</small>
+      </div>
+
+      <div class="paper-stack">
+        <div class="paper paper-a">
+          <span>ملخص سريع جدا</span>
+          <div class="fake-lines"></div>
+        </div>
+        <div class="paper paper-b">
+          <span>نقط مهمة عشان محدش يعيط</span>
+          <div class="fake-lines short"></div>
+        </div>
+        <div class="paper paper-c">
+          <strong>FEE</strong>
+          <small>ليلة الامتحان</small>
+        </div>
+      </div>
+
+      <div class="approved-stamp">معتمدة ليلة الامتحان</div>
+      <div class="summary-note">خدمة انقاذ بتشتغل غالبا بعد ما الامل بيقل</div>
+    </div>
+  </section>
+
+  <section class="scene p3-scene" id="appreciation" aria-label="الحاجات اللي بتعملها">
+    <div class="archive-room">
+      <div class="archive-heading">الحاجات اللي بتعملها وبتقول عليها عادي</div>
+      <div class="archive-desk">
+        <figure class="print-card work-card card-1">
+          <img src="assets/work_control.jpg" alt="شغل من أعمال چنى">
+          <figcaption>دي مثلا</figcaption>
+        </figure>
+        <figure class="print-card work-card card-2">
+          <img src="assets/work_banner.jpg" alt="تصميم من أعمال چنى">
+          <figcaption>ودي كمان عادي</figcaption>
+        </figure>
+        <figure class="print-card work-card card-3">
+          <img src="assets/work_handmade.jpg" alt="شغل يدوي من أعمال چنى">
+          <figcaption>ودي بردو عادي</figcaption>
+        </figure>
+        <figure class="print-card work-card manga-card">
+          <img src="assets/manga_1.png" alt="صفحة من المانجا اللي عملتها چنى">
+          <figcaption>والمانجا دي كده جات لوحدها يعني</figcaption>
+        </figure>
+      </div>
+
+      <div class="appreciation-copy">
+        <span id="appLine1">الغريب بقى</span>
+        <span id="appLine2">ان في حاجات بتتعمل بمجهود كبير</span>
+        <span id="appLine3">وبعدها بتتقال كأنها ولا حاجة</span>
+        <strong id="appLine4">بس هي مش ولا حاجة</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene p3-scene" id="learning" aria-label="بتتعلم بسرعة">
+    <div class="learning-room">
+      <div class="learning-title">
+        <span>عندها مشكلة صغيرة</span>
+        <strong>مبتعرفش تقول معرفش</strong>
+      </div>
+
+      <div class="reel-montage" id="learningReel">
+        <div class="reel-card"><img src="assets/work_banner.jpg"><span>تصميم؟ نجرب</span></div>
+        <div class="reel-card"><img src="assets/manga_2.png"><span>مانجا؟ ماشي</span></div>
+        <div class="reel-card"><img src="assets/work_control.jpg"><span>هاند ميد؟ حاضر</span></div>
+        <div class="reel-card"><img src="assets/manga_3.png"><span>حاجة اول مرة؟ هنتعلمها</span></div>
+      </div>
+
+      <div class="learning-punchline">وطبعا في الاخر تقولك عادي يعني</div>
+    </div>
+  </section>
+
+  <section class="scene p3-scene" id="versions" aria-label="نسخ چنى">
+    <div class="versions-room">
+      <div class="versions-heading">
+        <span>استنى</span>
+        <strong>هو احنا عندنا كام چنى هنا؟</strong>
+      </div>
+
+      <div class="identity-wall">
+        <article class="identity-card i1"><b>چنى FEE</b><small>النسخة الجامعية الاصلية</small></article>
+        <article class="identity-card i2"><b>چنى Rally</b><small>اول تيم جمعنا في نفس اللخبطة</small></article>
+        <article class="identity-card i3"><b>چنى تحكم</b><small>النسخة اللي دخلت القسم وقالت يلا نشوف</small></article>
+        <article class="identity-card i4"><b>چنى HERAFY</b><small>startup mode شغال</small></article>
+        <article class="identity-card i5"><b>چنى NAWA</b><small>نسخة جديدة ولسه بنكتشفها</small></article>
+        <article class="identity-card i6"><b>چنى ملخصات</b><small>شغالة وقت الزنقة فقط</small></article>
+      </div>
+
+      <div class="versions-punchline">واضح ان الانتاج كان مفتوح شوية</div>
+
+      <div class="next-door-hook">
+        <div class="hook-door"><span></span></div>
+        <div class="hook-copy">بس فيه باب لسه مستنينا</div>
+      </div>
+      
+    </div>
+  </section>
+
+
+  <section class="scene p4-scene" id="dreamDoor" aria-label="الباب">
+    <div class="dream-room">
+      <div class="dream-copy-top">
+        <span>في حاجات كتير كانت شكلها باب مقفول</span>
+        <small>بس واضح ان چنى عندها مشكلة مع الابواب المقفولة برضه</small>
+      </div>
+
+      <button class="dream-door" id="dreamDoorButton" aria-label="افتحي الباب">
+        <div class="door-frame-p4">
+          <div class="door-panel-p4"><i class="door-knob"></i></div>
+          <div class="door-world">
+            <div class="dream-ray"></div>
+            <span class="dream-label d1">بطولة جمهورية</span>
+            <span class="dream-label d2">الكلية اللي كان نفسها تدخلها</span>
+            <span class="dream-label d3">حاجة جديدة تتعلمها</span>
+            <span class="dream-label d4">مشروع تاني؟ يلا بينا</span>
+          </div>
+        </div>
+        <span class="door-instruction">افتحي الباب بدل ما نفضل واقفين</span>
+      </button>
+
+      <div class="dream-after" id="dreamAfter">
+        لو في حاجة نفسها فيها<br>
+        <strong>غالبا هتفضل تلف حواليها لحد ما تلاقي مدخل</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene p4-scene" id="husseinScene" aria-label="حسين">
+    <div class="hussein-room">
+      <div class="old-frame-border"></div>
+      <div class="hussein-silhouette"><div class="h-head"></div><div class="h-body"></div></div>
+      <div class="hussein-copy">
+        <span class="hc1">حسين كان فاهم حاجة من زمان</span>
+        <span class="hc2">ساعات الواحد مش محتاج حد يمشيه في الطريق</span>
+        <span class="hc3">محتاج حد يفكره انه يقدر يمشيه</span>
+        <strong class="hc4">اهو طلع الراجل مفيد اهو</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene p4-scene" id="intermission" aria-label="الاستراحة">
+    <div class="intermission-room">
+      <div class="stage-curtain stage-curtain-l"></div>
+      <div class="stage-curtain stage-curtain-r"></div>
+
+      <div class="intermission-card">
+        <strong>استراحة</strong>
+        <span>عشان الفيلم خد نفسه بزيادة</span>
+      </div>
+
+      <div class="live-stage">
+        <div class="spotlight"></div>
+        <div class="mic">
+          <div class="mic-head"></div><div class="mic-neck"></div><div class="mic-base"></div>
+        </div>
+        <div class="live-copy">
+          <span>والآن مع فقرة محدش كان مستعد لها</span>
+          <strong>چنى لايف</strong>
+        </div>
+        <div class="sound-wave">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+
+      <div class="after-live">
+        <span>شكرا شكرا</span>
+        <strong>الحفلة خلصت ارجعوا اماكنكم</strong>
+        <small>عشان في شوية لقطات الرقابة مش مبسوطة بيها</small>
+      </div>
+      
+    </div>
+  </section>
+
+
+  <div class="cinematic-transition" id="cinematicTransition">
+    <div class="gate-bar top"></div>
+    <div class="gate-bar bottom"></div>
+    <div class="gate-flash"></div>
+  </div>
+
+  <section class="scene p5-scene" id="censorScene" aria-label="الرقابة">
+    <div class="censor-room">
+      <div class="censor-title">
+        <span>في شوية لقطات</span>
+        <strong>كان المفروض متطلعش</strong>
+        <small>بس واضح ان الرقابة نامت</small>
+      </div>
+
+      <button class="censor-file" id="censorFileButton">
+        <div class="folder-tab">سري جدا تقريبا</div>
+        <div class="folder-body">
+          <div class="redacted-line"></div>
+          <div class="redacted-line short"></div>
+          <div class="folder-stamp">ممنوع العرض</div>
+          <span>افتحي الملف على مسؤوليتك</span>
+        </div>
+      </button>
+
+      <div class="censor-wall" id="censorWall">
+        <figure class="meme-card m1"><img src="assets/archive_05.png"><figcaption>اختيار بصري جريء جدا</figcaption></figure>
+        <figure class="meme-card m2"><img src="assets/archive_06.png"><figcaption>هنا الذوق خد اجازة</figcaption></figure>
+        <figure class="meme-card m3"><img src="assets/meme_chat.jpg"><figcaption>محادثات محدش فينا يقدر يشرحها لحد</figcaption></figure>
+        <figure class="meme-card m4"><img src="assets/archive_08.png"><figcaption>ادلة رسمية على العبث</figcaption></figure>
+        <figure class="meme-card m5"><img src="assets/archive_10.png"><figcaption>مفيش تفسير منطقي للصورة دي</figcaption></figure>
+        <figure class="meme-card m6"><img src="assets/archive_15.png"><figcaption>الصابونة داخلة المشهد متفائلة اوي</figcaption></figure>
+      </div>
+
+      <div class="censor-comment" id="censorComment">
+        مش عارف ليه فكرتني بحد
+        <strong>بيعتبر الشاور اقتراح مش قانون</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene p5-scene" id="archiveScene" aria-label="الأرشيف">
+    <div class="memory-room">
+      <div class="memory-projector"></div>
+      <div class="memory-title">
+        <span>من الارشيف</span>
+        <strong>قبل FEE وقبل Rally وقبل كل اللخبطة دي</strong>
+      </div>
+
+      <div class="memory-table">
+        <figure class="memory-photo a1"><img src="assets/archive_01.png"><figcaption>كانت بس چنى</figcaption></figure>
+        <figure class="memory-photo a2"><img src="assets/archive_02.png"><figcaption>قبل كل المسميات</figcaption></figure>
+        <figure class="memory-photo a3"><img src="assets/archive_03.png"><figcaption>نفس الروح تقريبا</figcaption></figure>
+        <figure class="memory-photo a4"><img src="assets/archive_04.png"><figcaption>بس مشاكل اقل غالبا</figcaption></figure>
+      </div>
+
+      <div class="memory-final">
+        الغريب ان حاجات كتير فيها
+        <strong>لسه هي هي</strong>
+      </div>
+      
+    </div>
+  </section>
+
+
+  <section class="scene p6-scene" id="fakeEnding" aria-label="النهاية الكدابة">
+    <div class="fake-ending-room">
+      <div class="ending-stage">
+        <div class="ending-curtain ending-curtain-l"></div>
+        <div class="ending-curtain ending-curtain-r"></div>
+        <div class="ending-screen">
+          <div class="ending-film-grain"></div>
+          <div class="the-end">تمت</div>
+          <div class="ending-lines">
+            <span class="el1">خلاص كده</span>
+            <span class="el2">قومي بقى</span>
+            <span class="el3">الناس وراكي عايزة تروح</span>
+          </div>
+        </div>
+      </div>
+      <div class="house-lights"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <section class="scene p6-scene" id="lastCurtain" aria-label="الستارة الأخيرة">
+    <div class="last-curtain-room">
+      <div class="last-curtain-panel lc-left"></div>
+      <div class="last-curtain-panel lc-right"></div>
+      <div class="last-screen">
+        <div class="wait-copy">
+          <span>لا استني</span>
+          <strong>في حاجة لسه متقالتش</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene p6-scene" id="finalMessage" aria-label="الرسالة الأخيرة">
+    <div class="final-room">
+      <div class="final-photo fp1"><img src="assets/cute_1.jpg" alt="چنى"></div>
+      <div class="final-photo fp2"><img src="assets/work_banner.jpg" alt="من شغل چنى"></div>
+      <div class="final-photo fp3"><img src="assets/archive_01.png" alt="چنى وهي صغيرة"></div>
+      <div class="final-photo fp4"><img src="assets/cute_2.jpg" alt="چنى"></div>
+
+      <div class="final-words">
+        <span class="fw1">واخد بالي</span>
+        <span class="fw2">مش عادي زي ما انتي فاكرة</span>
+        <span class="fw3">ثقي في نفسك شوية اكتر</span>
+        <strong class="fw4">متشاف</strong>
+      </div>
+
+      <div class="birthday-card">
+        <span>كل سنة وانتي طيبة يا چنى</span>
+        <small>ويا رب السنة دي تفتحلك ابواب اكتر</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene p6-scene" id="creditsScene" aria-label="النهاية">
+    <div class="credits-room">
+      <div class="credits-roll">
+        <div class="credit-title">طاقم العمل</div>
+
+        <div class="credit-row"><span>بطولة</span><strong>چنى</strong></div>
+        <div class="credit-row"><span>انقاذ ليلة الامتحان</span><strong>چنى ملخصات</strong></div>
+        <div class="credit-row"><span>اول لخبطة</span><strong>چنى Rally</strong></div>
+        <div class="credit-row"><span>الشؤون الجامعية</span><strong>چنى FEE</strong></div>
+        <div class="credit-row"><span>قسم الكنترول</span><strong>چنى تحكم</strong></div>
+        <div class="credit-row"><span>مشاريع زيادة عن اللزوم</span><strong>چنى HERAFY</strong></div>
+        <div class="credit-row"><span>نسخة جديدة تحت التجربة</span><strong>چنى NAWA</strong></div>
+
+        <div class="credit-gap"></div>
+        <div class="credit-row"><span>تصميم واخراج ولخبطة تقنية</span><strong>محمود</strong></div>
+        <div class="credit-row"><span>مراجعة الرقابة</span><strong>محدش راجع حاجة</strong></div>
+
+        <div class="credit-gap big"></div>
+        <div class="final-film-title">
+          <span>الباب المفتوح</span>
+          <small>بس حد نسي يفتحه</small>
+        </div>
+        <div class="opened-this-time">المرة دي اتفتح</div>
+      </div>
+      <div class="credit-vignette"></div>
+    </div>
+  </section>
+
+  <audio id="curtainSlowAudio" src="assets/curtain_slow.wav" preload="auto"></audio>
+  <audio id="audienceRiseAudio" src="assets/audience_rise.wav" preload="auto"></audio>
+  <audio id="projectorStopAudio" src="assets/projector_stop.wav" preload="auto"></audio>
+  <audio id="finalCueAudio" src="assets/final_cue.wav" preload="auto"></audio>
+  <audio id="finalVoiceAudio" src="assets/final_voice.wav" preload="auto"></audio>
+
+  <audio id="filmGateAudio" src="assets/film_gate.wav" preload="auto"></audio>
+  <audio id="censorStampAudio" src="assets/censor_stamp.wav" preload="auto"></audio>
+  <audio id="photoFlipAudio" src="assets/photo_flip.wav" preload="auto"></audio>
+  <audio id="comedyStingAudio" src="assets/comedy_sting.wav" preload="auto"></audio>
+
+  <audio id="bgMusic" src="assets/old_cinema_theme.mp3" preload="auto" loop></audio>
+  <audio id="lobbyBellAudio" src="assets/lobby_bell.wav" preload="auto"></audio>
+  <audio id="footstepsAudio" src="assets/footsteps.wav" preload="auto"></audio>
+  <audio id="dreamDoorAudio" src="assets/dream_door.wav" preload="auto"></audio>
+  <audio id="intermissionBellAudio" src="assets/intermission_bell.wav" preload="auto"></audio>
+  <audio id="janaLiveAudio" src="assets/jana_live.wav" preload="auto"></audio>
+  <audio id="applauseAudio" src="assets/applause.wav" preload="auto"></audio>
+
+  <audio id="firstShotAudio" src="assets/first_shot.wav" preload="auto"></audio>
+  <audio id="summariesAudio" src="assets/summaries_fx.wav" preload="auto"></audio>
+  <audio id="appreciationAudio" src="assets/appreciation_bed.wav" preload="auto"></audio>
+  <audio id="learningAudio" src="assets/learning_rhythm.wav" preload="auto"></audio>
+  <audio id="versionsAudio" src="assets/versions_fx.wav" preload="auto"></audio>
+  <audio id="doorHookAudio" src="assets/door_hook.wav" preload="auto"></audio>
+
+  <audio id="outsideAmbience" src="assets/outside_ambience.wav" preload="auto" loop></audio>
+  <audio id="ticketAudio" src="assets/ticket.wav" preload="auto"></audio>
+  <audio id="doorAudio" src="assets/door_open.wav" preload="auto"></audio>
+  <audio id="hallAmbience" src="assets/hall_ambience.wav" preload="auto" loop></audio>
+  <audio id="seatAudio" src="assets/seat_creak.wav" preload="auto"></audio>
+  <audio id="wrongSeatAudio" src="assets/wrong_seat.wav" preload="auto"></audio>
+  <audio id="correctSeatAudio" src="assets/correct_seat.wav" preload="auto"></audio>
+  <audio id="lightsDimAudio" src="assets/lights_dim.wav" preload="auto"></audio>
+
+  <audio id="projectorAudio" src="assets/projector_loop.wav" preload="auto" loop></audio>
+  <audio id="curtainAudio" src="assets/curtain.wav" preload="auto"></audio>
+  <audio id="breakAudio" src="assets/film_break.wav" preload="auto"></audio>
+  <audio id="voiceAudio" src="assets/cinema_voice.wav" preload="auto"></audio>
+  <audio id="revealAudio" src="assets/reveal_sting.wav" preload="auto"></audio>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
