@@ -64,6 +64,8 @@ const appreciation = document.getElementById('appreciation');
 const learning = document.getElementById('learning');
 const versions = document.getElementById('versions');
 
+const experienceGate = document.getElementById('experienceGate');
+const startExperience = document.getElementById('startExperience');
 const outsideAmbience = document.getElementById('outsideAmbience');
 const ticketAudio = document.getElementById('ticketAudio');
 const doorAudio = document.getElementById('doorAudio');
@@ -145,9 +147,16 @@ function musicTo(v,d=650){
 }
 
 
+startExperience.addEventListener('click',()=>{
+  startSoundtrack();
+  safePlay(outsideAmbience,.10,false);
+  experienceGate.classList.add('hidden');
+  setTimeout(()=>experienceGate.remove(),950);
+});
+
 claimBtn.addEventListener('click',()=>{
   startSoundtrack();
-  safePlay(outsideAmbience,.12,false);
+  if(outsideAmbience.paused) safePlay(outsideAmbience,.12,false);
   safePlay(ticketAudio,.95,true);
   setTimeout(()=>safePlay(lobbyBellAudio,.48,true),260);
   clerkText.textContent = 'آه تمام... موجودة';
@@ -273,6 +282,7 @@ async function beginFilm(myRun){
   if(openDoorClip){
     openDoorClip.src=openDoorClip.dataset.src;
     phaseScene.classList.add('clip-live');
+    setTimeout(()=>phaseScene.classList.add('clip-ready'),2200);
   }
   musicTo(.045,700);
   setPhase(phaseScene);
@@ -280,7 +290,7 @@ async function beginFilm(myRun){
 
   // Stop the external player cleanly before the film malfunction.
   if(openDoorClip){
-    phaseScene.classList.remove('clip-live');
+    phaseScene.classList.remove('clip-live','clip-ready');
     openDoorClip.src='about:blank';
   }
   musicTo(.09,350);
