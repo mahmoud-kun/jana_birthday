@@ -278,15 +278,14 @@ async function beginFilm(myRun){
   setPhase(phaseTitle);
   await sleep(3000); if(myRun!==runId)return;
 
-  // Real 20-second clip from Rotana Cinema's official YouTube upload.
+  // Real ~30-second clip from Rotana Cinema's official YouTube upload.
   if(openDoorClip){
     openDoorClip.src=openDoorClip.dataset.src;
-    phaseScene.classList.add('clip-live');
-    setTimeout(()=>phaseScene.classList.add('clip-ready'),2200);
+    phaseScene.classList.add('clip-live','clip-ready');
   }
   musicTo(.045,700);
   setPhase(phaseScene);
-  await sleep(20000); if(myRun!==runId)return;
+  await sleep(30000); if(myRun!==runId)return;
 
   // Stop the external player cleanly before the film malfunction.
   if(openDoorClip){
